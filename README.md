@@ -7,10 +7,9 @@ You can expose it, as a valid HTTPS `http://my-little-server.tailename-scalename
 with:
 
 ```
-TAILSCALE_USE_WIP_CODE=true \
-  tsproxy \
-    --from my-little-server \
-    --to ~/server.sock
+tsproxy \
+  --from my-little-server \
+  --to ~/server.sock
 ```
 
 ## Hey, that didn't work!
@@ -20,7 +19,6 @@ key](https://tailscale.com/kb/1085/auth-keys/) in the `TS_AUTHKEY` environment
 variable, e.g.:
 
 ```
-TAILSCALE_USE_WIP_CODE=true \
 TS_AUTHKEY=tskey-asdf-jklsemicolon \
   tsproxy \
     --from my-little-server \
@@ -28,7 +26,7 @@ TS_AUTHKEY=tskey-asdf-jklsemicolon \
 ```
 
 If you use a One-of Key to authenticate, future invocations of `tsproxy` for the
-same `--from` address will use 
+same `--from` address will already be authenticated.
 
 ## Why?
 
@@ -53,3 +51,8 @@ privileged user.
 Instead, `tsproxy` uses the (experimental!) `tsnet` userspace client for
 Tailscale- not rerouting all traffic from the node, only rerouting traffic from
 its listener.
+
+## Don't use this
+
+You'll note that this doesn't have much in the way of tests, documentation,
+fuzzing, or updates. Use at our own risl.
