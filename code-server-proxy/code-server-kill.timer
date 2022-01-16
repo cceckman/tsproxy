@@ -2,6 +2,7 @@
 Description=Watchdog for code-server
 
 [Timer]
-OnActiveSec=2m
+OnActiveSec=15m
 WakeSystem=false
+RemainAfterElapse=false
 
