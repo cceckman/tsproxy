@@ -1,0 +1,8 @@
+[Unit]
+Description=Activates code-server from tsproxy socket
+
+[Socket]
+ListenStream=%h/.local/tsproxy/code-server.sock
+Accept=no
+Service=code-server-proxyd.service
+

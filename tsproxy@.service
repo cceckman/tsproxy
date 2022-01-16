@@ -1,0 +1,9 @@
+[Unit]
+Description=Tailscale proxy to local sockets
+Requires=%i.socket
+
+[Service]
+Type=exec
+Environment=TAILSCALE_USE_WIP_CODE=true
+ExecStart=/usr/local/bin/tsproxy --from %i --to %h/.local/tsproxy/%i.sock
+Restart=always

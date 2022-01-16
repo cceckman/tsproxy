@@ -43,6 +43,7 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
+		log.Printf("got connection from %v", conn.RemoteAddr())
 		go handleConnection(net, addr, conn)
 	}
 }
@@ -87,7 +88,7 @@ func handleConnection(localNet string, localAddr string, c net.Conn) {
 	remoteAddr := c.RemoteAddr().String()
 
 	if who, err := tailscale.WhoIs(ctx, remoteAddr); err != nil {
-		log.Printf("error getting Tailscale whois info: %w", err)
+		log.Printf("error getting Tailscale whois info: %s", err)
 		return
 	} else {
 		log.Printf("established connection at %s to %s on %s", remoteAddr, who.UserProfile.LoginName, who.Node.Name)
@@ -96,7 +97,7 @@ func handleConnection(localNet string, localAddr string, c net.Conn) {
 	// Establish a new local connection.
 	localConn, err := net.Dial(localNet, localAddr)
 	if err != nil {
-		log.Printf("could not establish local connection: %w", err)
+		log.Printf("could not establish local connection: %s", err)
 		return
 	}
 	defer localConn.Close()

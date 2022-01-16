@@ -1,0 +1,10 @@
+[Unit]
+Requires=code-server.service
+After=code-server.service
+Requires=code-server-kill.timer
+After=code-server-kill.timer
+
+[Service]
+ExecStart=/usr/lib/systemd/systemd-socket-proxyd %h/.local/code-server.sock
+PrivateTmp=yes
+PrivateNetwork=yes

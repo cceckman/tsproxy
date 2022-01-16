@@ -1,0 +1,8 @@
+[Unit]
+Description=code-server on a local socket
+StopWhenUnneeded=true
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/code-server --socket %h/.local/code-server.sock
+Restart=on-abnormal

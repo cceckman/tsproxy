@@ -1,0 +1,7 @@
+[Unit]
+Description=Watchdog for code-server
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/code-server-kill 2
+

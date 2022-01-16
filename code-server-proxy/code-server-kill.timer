@@ -1,0 +1,7 @@
+[Unit]
+Description=Watchdog for code-server
+
+[Timer]
+OnActiveSec=2m
+WakeSystem=false
+

@@ -1,0 +1,14 @@
+#!/bin/sh
+# Stops the code-server unit if its heartbeat file is more than $1 mins old.
+# Otherwise, reschedules the code-server-kill timer.
+
+set -e
+
+if test -n "$(find ~/.local/share/code-server/heartbeat -mmin -$1)"
+then
+  echo >&2 "Heartbeat active; rescheduling timer"
+  systemctl --user restart code-server-kill.timer
+else
+  echo >&2 "Heartbeat inactive; stopping code-server"
+  systemctl --user stop code-server
+fi
