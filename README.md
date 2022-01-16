@@ -55,4 +55,4 @@ its listener.
 ## Don't use this
 
 You'll note that this doesn't have much in the way of tests, documentation,
-fuzzing, or updates. Use at our own risl.
+fuzzing, or updates. Use at your own risk.
