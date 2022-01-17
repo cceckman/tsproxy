@@ -2,6 +2,9 @@
 Description=Tailscale proxy to local sockets
 Requires=%i.socket
 
+[Install]
+WantedBy=default.target
+
 [Service]
 Type=exec
 Environment=TAILSCALE_USE_WIP_CODE=true
