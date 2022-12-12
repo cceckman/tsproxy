@@ -37,7 +37,7 @@ var (
 	emailHeader = flag.String("email-header", "X-Webauth-Email", "Header indicating the email address associated with the authenticated user")
 	netHeader   = flag.String("net-header", "X-Webauth-Network", "Header indicating the Tailscale network associated with the authenticated user")
 	userHeader  = flag.String("user-header", "X-Webauth-User", "Header indicating the user name (prefix of email address) associated with the authenticated user")
-	authKeyPath = flag.String("authkey-path", "", "If present, path of a file contianing a Tailscale auth key. Can be used in place of TS_AUTHKEY.")
+	authKeyPath = flag.String("authkey-path", "", "If present, path of a file containing a Tailscale auth key. Can be used in place of TS_AUTHKEY.")
 )
 
 func main() {
