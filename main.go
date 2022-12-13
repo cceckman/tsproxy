@@ -34,10 +34,10 @@ var (
 	to          = flag.String("to", "", "(Local) address to proxy connections to")
 	from        = flag.String("from", "", "Tailscale node name to register this proxy as")
 	help        = flag.Bool("help", false, "Display a usage message.")
-	emailHeader = flag.String("email-header", "X-Webauth-Email", "Header indicating the email address associated with the authenticated user")
-	netHeader   = flag.String("net-header", "X-Webauth-Network", "Header indicating the Tailscale network associated with the authenticated user")
-	userHeader  = flag.String("user-header", "X-Webauth-User", "Header indicating the user name (prefix of email address) associated with the authenticated user")
-	authKeyPath = flag.String("authkey-path", "", "If present, path of a file containing a Tailscale auth key. Can be used in place of TS_AUTHKEY.")
+	emailHeader = flag.String("emailHeader", "X-Webauth-Email", "Header indicating the email address associated with the authenticated user")
+	netHeader   = flag.String("netHeader", "X-Webauth-Network", "Header indicating the Tailscale network associated with the authenticated user")
+	userHeader  = flag.String("userHeader", "X-Webauth-User", "Header indicating the user name (prefix of email address) associated with the authenticated user")
+	authKeyPath = flag.String("authKeyPath", "", "If present, path of a file containing a Tailscale auth key. Can be used in place of TS_AUTHKEY.")
 )
 
 func main() {
