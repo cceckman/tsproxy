@@ -38,9 +38,11 @@ var (
 	netHeader   = flag.String("netHeader", "X-Webauth-Network", "Header indicating the Tailscale network associated with the authenticated user")
 	userHeader  = flag.String("userHeader", "X-Webauth-User", "Header indicating the user name (prefix of email address) associated with the authenticated user")
 	authKeyPath = flag.String("authKeyPath", "", "If present, path of a file containing a Tailscale auth key. Can be used in place of TS_AUTHKEY.")
+	statePath = flag.String("statePath", "", "If present, the directory to store persistent state in (e.g. credentials)")
 )
 
 func main() {
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "%s:	 \nUsage:\n", os.Args[0])
 		flag.PrintDefaults()
@@ -124,13 +126,20 @@ func getAddr(to string) (net, addr string) {
 	return "tcp", to
 }
 
-func getServer() *tsnet.Server {
-	// Interpolate "name" into the address, so two `tsproxy`s for the same user don't clobber each other.
-	userDir, err := os.UserConfigDir()
-	if err != nil {
-		log.Fatal(err)
+func getStateDir() string {
+	if *statePath != "" {
+		return *statePath
 	}
-	dir := path.Join(userDir, fmt.Sprintf("tsproxy-%s", *from))
+	// Use $STATE_DIRECTORY as specified by
+	// https://www.freedesktop.org/software/systemd/man/systemd.exec.html -
+	// should work for user or system units.
+	statePath := os.Getenv("STATE_DIRECTORY")
+	// Extend with this particular instance
+	return path.Join(statePath, fmt.Sprintf("tsproxy-%s", *from))
+}
+
+func getServer() *tsnet.Server {
+	dir := getStateDir()
 	if _, err := os.Stat(dir); os.IsNotExist(err) {
 		os.MkdirAll(dir, 0700)
 	}
