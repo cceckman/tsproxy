@@ -58,6 +58,8 @@
             script = ''
             tsproxy -from ${hostname} -to ${target} ${authKeyFlag}
             '';
+            wantedBy = ["multi-user.target"];
+            after = ["network-online.target"];
           };
         };
       in {
