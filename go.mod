@@ -2,7 +2,7 @@ module github.com/cceckman/tsproxy
 
 go 1.19
 
-require tailscale.com v1.34.0
+require tailscale.com v1.34.1
 
 require (
 	filippo.io/edwards25519 v1.0.0-rc.1 // indirect

@@ -16,8 +16,7 @@
           name = "tsproxy";
           src = ./.;
           runVend = true;
-          # proxyVend = true;
-          vendorSha256 = "sha256-HSYkoEXdOPKzZ2P+YQqg8+cxSPUcQnPUQCguMbrVBjw=";
+          vendorSha256 = "sha256-pZM7zdB74hQD+oGzYjGR9RSZ4mKLEd7euFi2htAs0tU=";
         };
         default = tsproxy;
       };

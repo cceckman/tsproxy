@@ -292,3 +292,5 @@ nhooyr.io/websocket v1.8.7/go.mod h1:B70DZP8IakI65RVQ51MsWP/8jndNma26DVA/nFSCgW0
 software.sslmate.com/src/go-pkcs12 v0.2.0 h1:nlFkj7bTysH6VkC4fGphtjXRbezREPgrHuJG20hBGPE=
 tailscale.com v1.34.0 h1:ntWjElpoTfjbBjYC4gt0jH/V4tjRfl3FW7ZEDu8u+4s=
 tailscale.com v1.34.0/go.mod h1:ZsBP7rjzzB2rp+UCOumr9DAe0EQ6OPivwSXcz/BrekQ=
+tailscale.com v1.34.1 h1:tqm9Ww4ltyYp3IPe7vCGch6tT6j5G/WXPQ6BrVZ6pdI=
+tailscale.com v1.34.1/go.mod h1:ZsBP7rjzzB2rp+UCOumr9DAe0EQ6OPivwSXcz/BrekQ=
